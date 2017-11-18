@@ -1,4 +1,5 @@
-**/1.sln
-**/1/1.vcxproj
-**/1/1.vcxproj.filters
-**/Debug
+*.sln
+*.vcxproj
+*.vcxproj.filters
+Debug/
+.vs/
