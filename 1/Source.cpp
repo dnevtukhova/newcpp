@@ -6,5 +6,5 @@
 void main()
 {
 	int j;
-	int i;
+	
 }
