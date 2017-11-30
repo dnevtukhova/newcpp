@@ -1,12 +1,7 @@
-#include <windows.h>
-#include <windowsx.h>
-#include <stdio.h>
-#include <conio.h>
-#include <iostream>
-#include <tchar.h>
+#include "trapeze.h"
 
 #define _CRT_SECURE_NO_WARNINGS
-
+void paintLine();
 using namespace std;
 //меню
 int menu() 
@@ -39,44 +34,45 @@ void paintPoligon()
 		cout << "ќкно не найдено\n";
 	}
 	cin.get();
-
 	// получаем контекст отображени€
-	HDC hdc = GetDC(hwnd); 
+	HDC hdc = GetDC(hwnd);
 	RECT rt;
 	char buf[100];
 	// устанавливаем цвет фона
-	SetBkColor(hdc, RGB(0, 0, 0)); 
+	SetBkColor(hdc, RGB(0, 0, 0));
 	// устанавливаем цвет текста
-	SetTextColor(hdc, RGB(161, 70, 213)); 
+	SetTextColor(hdc, RGB(161, 70, 213));
 	// создаем желтое перо
-	HPEN hYellowPen = CreatePen(PS_SOLID, 5, RGB(223, 238, 94)); 
+	HPEN hYellowPen = CreatePen(PS_SOLID, 5, RGB(223, 238, 94));
 	// и выбираем его в контекст отображени€, сохран€€ предыдущее перо
-	HPEN hOldPen = SelectPen(hdc, hYellowPen); 
+	HPEN hOldPen = SelectPen(hdc, hYellowPen);
 	// создаем зеленую кисть
-	HBRUSH hGreenBrush = CreateSolidBrush(RGB(149, 246, 75)); 
+	HBRUSH hGreenBrush = CreateSolidBrush(RGB(149, 246, 75));
 	// и выбираем ее в контекст отображени€, сохран€€ предыдущую кисть
-	HBRUSH hOldBrush = SelectBrush(hdc, hGreenBrush); 
+	HBRUSH hOldBrush = SelectBrush(hdc, hGreenBrush);
 	do
 	{
 		// получаем размер окна
-		GetClientRect(hwnd, &rt); 
+		GetClientRect(hwnd, &rt);
 		// формируем выводимую строку
-		sprintf(buf, "–азмер окна %d на %d пикселей", rt.right, rt.bottom); 
+		sprintf(buf, "–азмер окна %d на %d пикселей", rt.right, rt.bottom);
 		// выводим строку графическими средствами
-		TextOutA(hdc, 10, 10, buf, strlen(buf)); 
+		TextOutA(hdc, 10, 10, buf, strlen(buf));
 		POINT ppt1[4] = { { 100,30 },{ rt.right - 100,30 },{ rt.right - 50, rt.bottom - 50 },{ 30,rt.bottom - 50 } };
 		// рисуем закрашенную трапецию
-		Polygon(hdc, ppt1, 4);	} while (getch() != 27);
+		Polygon(hdc, ppt1, 4);
+	} while (getch() != 27);
 	// выбираем в контекст отображени€ предыдущую кисть
-	SelectBrush(hdc, hOldBrush); 
+	SelectBrush(hdc, hOldBrush);
 	// удал€ем зеленую кисть
-	DeleteBrush(hGreenBrush); 
+	DeleteBrush(hGreenBrush);
 	// выбираем в контекст отображени€ предыдущее перо
-	SelectPen(hdc, hOldPen); 
+	SelectPen(hdc, hOldPen);
 	// удал€ем желтое перо
-	DeletePen(hYellowPen);	
+	DeletePen(hYellowPen);
 	// освобождаем контекст отображени€
 	ReleaseDC(hwnd, hdc);
+	
 }
 
 //рисуем контур
@@ -101,7 +97,7 @@ sprintf(buf, "–азмер окна %d на %d пикселей", rt.right, rt.bottom);
 TextOutA(hdc, 10, 10, buf, strlen(buf));
 POINT ppt1[5] = { { 100,30 },{ rt.right - 100,30 },{ rt.right - 50, rt.bottom - 50 },{ 30,rt.bottom - 50 },{ 100,30 } };
 //контур трапеции
-Polyline(hdc, ppt1, 5);
+Polygon(hdc, ppt1, 5);
 } while (getch() != 27);
 
 // выбираем в контекст отображени€ предыдущее перо
@@ -154,12 +150,23 @@ ReleaseDC(hwnd, hdc);
 
 void main()
 {
+	
+
 	setlocale(LC_ALL, "rus");
 	for (;;)
 		{
 			int variant = menu();
 			switch (variant)
 			{
-			case 1:				paintPoligon ();				break;			case 2:				paintLine();				break;			case 3:				paintTwoFigure();				break;			}
+			case 1:
+				paintLine();
+				break;
+			case 2:
+				paintPoligon();
+				break;
+			case 3:
+				paintTwoFigure();
+				break;
+			}
 		}		
 }
