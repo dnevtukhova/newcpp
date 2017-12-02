@@ -38,4 +38,3 @@ trapeze::~trapeze()  // деструктор
 	delete height;
 }
 
-

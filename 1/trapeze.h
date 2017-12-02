@@ -5,6 +5,7 @@
 #include <conio.h>
 #include <iostream>
 #include <tchar.h>
+#include <fstream>
 
 class trapeze
 {
@@ -21,9 +22,9 @@ public:
 	int Get_lowerBase() { return *lowerBase; }  // селектор 
 	int Get_upperBase() { return *upperBase; }  // селектор
 	int Get_height() { return *height; }
-	void Set_lowerBase(int lb) { *lowerBase = lb; }  // модификатор
-	void Set_dlin_vis(int ub) { *upperBase = ub; }  // модификатор
-	void Set_dlin_vis(int h) { *height = h; }  // модификатор
+	void Set_lowerBase(int lb) {  *lowerBase = lb; }  // модификатор
+	void Set_upperBase(int ub) { *upperBase = ub; }  // модификатор
+	void Set_height(int h) { *height = h; }  // модификатор
 
 };
 

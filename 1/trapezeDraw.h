@@ -4,37 +4,37 @@
 class trapezeDraw
 {
 private:
-	//int i,a1, b1, a2, b2, x1, x2, y1, y2, cvet, foncvet, shirina, sm_x, sm_y, maxx, maxy;
-	FILE*fp;
-	FILE*fp2;
+	int lb, ub, h; //для задания новых размеров
+	//задаем начальные значения для координат x и y
+	int x = 30;
+	int y = 30;
+	int x1, y1; // для задания смещения по осям x и y
 	HWND hwnd;
 	HDC hdc;
 	RECT rt;
 	char buf[100];
+	HBRUSH hOldBrush;
+	HBRUSH hGreenBrush;
+	HPEN hYellowPen;
+	HPEN hOldPen;
+	
 	
 public:
 	trapezeDraw();
-	~trapezeDraw();
 
-	BYTE SetColour1(); //выбрать цвет
 	int GetColour(); //Ввести цвет
+	void SetText();// для вывода размера окна в виде текста
+	void SetPen(); //выбрать перо для контура
+	void SetBrush(); //выбрать кисть для заливки
+	void DelBrush(); //удалить кисть
+	void risov(trapeze* t);
+	void vlozh(trapeze*t); 
+	void GetNewSize(); //задать новые размеры фигуры
+	void SetSize(trapeze*t); //изменить размеры фигуры
+	void SetPosition(); // изменить положение фигуры
+	void GetBiass(); //задать смещение (изменение положения)
+	void ReadFile(trapeze*t);
+	void SaveFile(trapeze*t);
 
-	void SetPen(HDC hdc, RECT rt); //выбрать перо для контура
-	 void SetBrush(HDC hdc, RECT rt); //выбрать кисть для заливки
-	void SetText(HDC hdc, RECT rt);// для вывода размера окна в виде текста
-	void trapezeDraw::risov(trapeze* t);
-	//-----void trapezeDraw::zaliv();
-	void trapezeDraw::vlozh(int *upperBase, int *height);
-	//void trapeze::prov_dannyh();
-	//void trapeze::prov_vlozh();
-	void trapezeDraw::izm_polozh();
-	void trapezeDraw::settings(); ///??
-	void trapezeDraw::read_file();
-	void trapezeDraw::save_file();
-
-
-
-
-	
-
+	~trapezeDraw();
 };
