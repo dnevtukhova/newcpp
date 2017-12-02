@@ -2,7 +2,7 @@
 #include "trapezeDraw.h"
 
 #define _CRT_SECURE_NO_WARNINGS
-//void paintLine();
+
 using namespace std;
 //меню
 int menu() 
@@ -75,10 +75,11 @@ void main()
 				tD->ReadFile(t);
 				break;
 			case 6:
-				//tD->GetNewSize();
-				try {
-					tD->GetNewSize();
-					tD->SetSize(t);}
+				tD->GetNewSize();
+				try 
+				{
+					tD->SetSize(t);
+				}
 				catch (int error)
 				{
 					if (error==0)
@@ -88,7 +89,8 @@ void main()
 				break;
 			case 7:
 				tD->GetBiass();
-				try {
+				try 
+				{
 					tD->SetPosition();
 				}
 				catch (int error)
@@ -96,17 +98,12 @@ void main()
 					if (error == 0)
 						cout << "Некорректно введено смещение!!!" << endl;
 				}
-				
-				
 				break;
 			case 8:
 				exit(0);
 				break;
 			}
-			
 		}
-
 	delete tD;
 	delete t;
-	
 }

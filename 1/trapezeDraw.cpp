@@ -32,7 +32,7 @@ void trapezeDraw::ReadFile(trapeze*t) //считать из файла
 
 
 
-void trapezeDraw::SaveFile(trapeze *t)
+void trapezeDraw::SaveFile(trapeze *t) //сохранить в файл
 {
 	
 		ofstream fout("SaveTrapeze.txt");
@@ -58,6 +58,7 @@ int trapezeDraw:: GetColour()
 	cin >> colour;
 	return colour;
 }
+
 void trapezeDraw::SetText() 
 {
 	// устанавливаем цвет фона
@@ -74,46 +75,40 @@ void trapezeDraw::SetPen()
 	hOldPen = SelectPen(hdc, hYellowPen);
 	
 }
+
 void trapezeDraw::DelBrush()
 {
 	DeleteBrush(hGreenBrush);
-
 	hOldBrush = SelectBrush(hdc, hOldBrush);
-
-	//DeleteBrush(hGreenBrush);
 }
 
 void trapezeDraw::SetBrush() //выбрать кисть для заливки
 {
 	int i = GetColour();
-	if (i == 1) {
+	if (i == 1) 
+	{
 		hGreenBrush = CreateSolidBrush( RGB(254, 254, 34));//желтый
 	}
 
-	else {
+	else 
+	{
 		if (i == 2)
 		{
 			hGreenBrush = CreateSolidBrush(RGB(149, 246, 75));//зеленый
 		}
-		else {
+		else 
+		{
 			hGreenBrush = CreateSolidBrush(RGB(252, 40, 71));//красный
 		}
 	}
-
-	//BYTE Colour = SetColour1(i);
-	//hGreenBrush = CreateSolidBrush(Colour);
-	// и выбираем ее в контекст отображения, сохраняя предыдущую кисть
-hOldBrush = SelectBrush(hdc, hGreenBrush);
-	//return hGreenBrush;
+		
+	hOldBrush = SelectBrush(hdc, hGreenBrush);
 }
 
 
 
 void trapezeDraw::risov(trapeze* t)
 {
-	
-	
-	
 		// получаем размер окна
 		GetClientRect(hwnd, &rt);
 		// формируем выводимую строку
@@ -123,24 +118,22 @@ void trapezeDraw::risov(trapeze* t)
 		int height = t->Get_height();
 		int lowerBase = t->Get_lowerBase();
 		int upperBase = t->Get_upperBase();
-		
-		POINT ppt1[4] = {{ (x+((lowerBase-upperBase)/2)),y },{ x + upperBase,y },{ x + lowerBase, y + height}, {  x,y + height }};
+				POINT ppt1[4] = {{ (x+((lowerBase-upperBase)/2)),y },{ x + upperBase,y },{ x + lowerBase, y + height}, {  x,y + height }};
 		// рисуем закрашенную трапецию
 		Polygon(hdc, ppt1, 4);
-	
-	
 }
 
-void trapezeDraw::vlozh(trapeze*t) {
-	
+void trapezeDraw::vlozh(trapeze*t)
+{
 		int height = t->Get_height();
 		int upperBase = t->Get_upperBase();
 		int lowerBase = t->Get_lowerBase();
 		Ellipse(hdc, (x + ((lowerBase - upperBase) / 2)), y, x+ upperBase, y + height);
 	
 }
-trapezeDraw::~trapezeDraw() {
-	
+
+trapezeDraw::~trapezeDraw() 
+{	
 	SelectBrush(hdc, hOldBrush);
 	// удаляем зеленую кисть
 	DeleteBrush(hGreenBrush);
@@ -148,14 +141,12 @@ trapezeDraw::~trapezeDraw() {
 	SelectPen(hdc, hOldPen);
 	// удаляем желтое перо
 	DeletePen(hYellowPen);
-	// освобождаем контекст отображения*/
+	// освобождаем контекст отображения
 	ReleaseDC(hwnd, hdc);
 }
 
 void trapezeDraw::GetNewSize()
 {
-	
-	
 	cout << "Введите новое значение длины нижнего основания" << endl;
 	cout << ">>> ";
 	cin >> lb;
@@ -169,15 +160,14 @@ void trapezeDraw::GetNewSize()
 	if (ub<1 || ub>500) throw 0;
 	if (h<1 || h>500) throw 0;
 	
-	
 }
+
 void trapezeDraw::SetSize(trapeze *t) 
 {
 	
 	t->Set_lowerBase(lb);
 	t->Set_upperBase(ub);
 	t->Set_height(h);
-
 }
 
 void trapezeDraw:: GetBiass() //задать смещение (изменение положения)
@@ -192,12 +182,9 @@ void trapezeDraw:: GetBiass() //задать смещение (изменение положения)
 
 void trapezeDraw::SetPosition() // изменить положение фигуры
 {
-	
 	x = x + x1;
 	y = y + y1;
 
 	if (x<0 || x>500) throw 0;
 	if (y<0 || y>500) throw 0;
-	
-
 }

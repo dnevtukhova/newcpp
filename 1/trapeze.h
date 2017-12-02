@@ -10,22 +10,21 @@
 class trapeze
 {
 private:
-		int *lowerBase; //длина нижнего основания
+	int *lowerBase; //длина нижнего основания
 	int *upperBase; //длина верхнего основания
 	int *height; //высота
 
 public:
 	trapeze();  // конструктор по умолчанию
+
 	trapeze(int lowerBase, int upperBase, int height);  // конструктор с заданными параметрами
 	trapeze(trapeze &t);  //конструктор копирования
+	int Get_lowerBase(); //получить значение
+	int Get_upperBase();
+	int Get_height();
+	void Set_lowerBase(int lb); // изменить значение
+	void Set_upperBase(int ub);
+	void Set_height(int h);
+
 	~trapeze();  // деструктор
-	int Get_lowerBase() { return *lowerBase; }  // селектор 
-	int Get_upperBase() { return *upperBase; }  // селектор
-	int Get_height() { return *height; }
-	void Set_lowerBase(int lb) {  *lowerBase = lb; }  // модификатор
-	void Set_upperBase(int ub) { *upperBase = ub; }  // модификатор
-	void Set_height(int h) { *height = h; }  // модификатор
-
 };
-
-

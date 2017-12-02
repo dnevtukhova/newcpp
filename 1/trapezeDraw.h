@@ -27,14 +27,14 @@ public:
 	void SetPen(); //выбрать перо для контура
 	void SetBrush(); //выбрать кисть для заливки
 	void DelBrush(); //удалить кисть
-	void risov(trapeze* t);
-	void vlozh(trapeze*t); 
+	void risov(trapeze* t);//рисовать
+	void vlozh(trapeze*t); //рисовать вложенную фигуру
 	void GetNewSize(); //задать новые размеры фигуры
 	void SetSize(trapeze*t); //изменить размеры фигуры
 	void SetPosition(); // изменить положение фигуры
 	void GetBiass(); //задать смещение (изменение положения)
-	void ReadFile(trapeze*t);
-	void SaveFile(trapeze*t);
+	void ReadFile(trapeze*t);//считать из файла
+	void SaveFile(trapeze*t);//сохранить в файл
 
 	~trapezeDraw();
 };
