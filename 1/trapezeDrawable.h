@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "trapeze.h"
 
 class trapezeDrawable
@@ -11,22 +11,22 @@ private:
 public:
 	trapezeDrawable(trapeze *t, int xNew, int yNew);
 
-	int GetColour(); //Ввести цвет
-	void SetText(HDC hdc);// для вывода размера окна в виде текста
-	void SetPen(HDC hdc); //выбрать перо для контура
-	HBRUSH SetBrush(HDC hdc); //выбрать кисть для заливки
-	void DelBrush(HDC hdc, HBRUSH hGreenBrush, HBRUSH hOldBrush); //удалить кисть
-	void Risov(HDC hdc, char*buf, RECT rt, HWND hwnd);//рисовать
-	void Vlozh(HDC hdc); //рисовать вложенную фигуру
-	int GetNewSizeLb(RECT rt, HWND hwnd); //задать новые размеры фигуры
+	int GetColour(); //Р’РІРµСЃС‚Рё С†РІРµС‚
+	void SetText(HDC hdc);// РґР»СЏ РІС‹РІРѕРґР° СЂР°Р·РјРµСЂР° РѕРєРЅР° РІ РІРёРґРµ С‚РµРєСЃС‚Р°
+	void SetPen(HDC hdc); //РІС‹Р±СЂР°С‚СЊ РїРµСЂРѕ РґР»СЏ РєРѕРЅС‚СѓСЂР°
+	HBRUSH SetBrush(HDC hdc); //РІС‹Р±СЂР°С‚СЊ РєРёСЃС‚СЊ РґР»СЏ Р·Р°Р»РёРІРєРё
+	void DelBrush(HDC hdc, HBRUSH hGreenBrush, HBRUSH hOldBrush); //СѓРґР°Р»РёС‚СЊ РєРёСЃС‚СЊ
+	void Risov(HDC hdc, char*buf, RECT rt, HWND hwnd);//СЂРёСЃРѕРІР°С‚СЊ
+	void Vlozh(HDC hdc); //СЂРёСЃРѕРІР°С‚СЊ РІР»РѕР¶РµРЅРЅСѓСЋ С„РёРіСѓСЂСѓ
+	int GetNewSizeLb(RECT rt, HWND hwnd); //Р·Р°РґР°С‚СЊ РЅРѕРІС‹Рµ СЂР°Р·РјРµСЂС‹ С„РёРіСѓСЂС‹
 	int GetNewSizeUb(RECT rt, HWND hwnd);
 	int GetNewSizeH(RECT rt, HWND hwnd);
-	void SetSize(int lb, int ub, int h); //изменить размеры фигуры
-	void SetPosition(int x1, int y1, RECT rt, HWND hwnd); // изменить положение фигуры
-	int GetBiassX(); //задать смещение (изменение положения по оси X)
-	int GetBiassY(); //задать смещение (изменение положения по оси Y)
-	void ReadFile();//считать из файла
-	void SaveFile();//сохранить в файл
+	void SetSize(int lb, int ub, int h); //РёР·РјРµРЅРёС‚СЊ СЂР°Р·РјРµСЂС‹ С„РёРіСѓСЂС‹
+	void SetPosition(int x1, int y1, RECT rt, HWND hwnd); // РёР·РјРµРЅРёС‚СЊ РїРѕР»РѕР¶РµРЅРёРµ С„РёРіСѓСЂС‹
+	int GetBiassX(); //Р·Р°РґР°С‚СЊ СЃРјРµС‰РµРЅРёРµ (РёР·РјРµРЅРµРЅРёРµ РїРѕР»РѕР¶РµРЅРёСЏ РїРѕ РѕСЃРё X)
+	int GetBiassY(); //Р·Р°РґР°С‚СЊ СЃРјРµС‰РµРЅРёРµ (РёР·РјРµРЅРµРЅРёРµ РїРѕР»РѕР¶РµРЅРёСЏ РїРѕ РѕСЃРё Y)
+	void ReadFile();//СЃС‡РёС‚Р°С‚СЊ РёР· С„Р°Р№Р»Р°
+	void SaveFile();//СЃРѕС…СЂР°РЅРёС‚СЊ РІ С„Р°Р№Р»
 
 	~trapezeDrawable();
 };

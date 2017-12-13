@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "trapeze.h"
 #include "trapezeTableOrdered.h"
 using namespace std;
@@ -19,7 +19,7 @@ trapezeTableOrdered::~trapezeTableOrdered()
 
 
 
-/* Поиск элемента в таблице; результат – индекс найденного элемента или -1 */
+/* РџРѕРёСЃРє СЌР»РµРјРµРЅС‚Р° РІ С‚Р°Р±Р»РёС†Рµ; СЂРµР·СѓР»СЊС‚Р°С‚ вЂ“ РёРЅРґРµРєСЃ РЅР°Р№РґРµРЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РёР»Рё -1 */
 
 int trapezeTableOrdered::findTable(int nkey)
 
@@ -32,9 +32,9 @@ int trapezeTableOrdered::findTable(int nkey)
 		int j = (i + k) / 2;
 
 		if (tableTrapeze->key == nkey)
-			cout << "Элемент найден" << endl;
+			cout << "Р­Р»РµРјРµРЅС‚ РЅР°Р№РґРµРЅ" << endl;
 			cout << tableTrapeze->key << endl;
-			return tableTrapeze->key; /* элементнайден */
+			return tableTrapeze->key; /* СЌР»РµРјРµРЅС‚РЅР°Р№РґРµРЅ */
 
 
 		if (tableTrapeze->key <nkey)
@@ -45,12 +45,12 @@ int trapezeTableOrdered::findTable(int nkey)
 
 	}
 
-	cout << "Элемента в таблице нет" << endl;
+	cout << "Р­Р»РµРјРµРЅС‚Р° РІ С‚Р°Р±Р»РёС†Рµ РЅРµС‚" << endl;
 	return -1;
 
 }
 
-/* удаление элемента в таблице */
+/* СѓРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РІ С‚Р°Р±Р»РёС†Рµ */
 
 int trapezeTableOrdered::deleteTable(int nKey)
 {
@@ -59,15 +59,15 @@ int trapezeTableOrdered::deleteTable(int nKey)
 
 	if ((i=findTable(nKey) < 0))
 
-		return-1;	/* элемента в таблице нет */
+		return-1;	/* СЌР»РµРјРµРЅС‚Р° РІ С‚Р°Р±Р»РёС†Рµ РЅРµС‚ */
 
-	--n;	/* новый текущий размер таблицы */
+	--n;	/* РЅРѕРІС‹Р№ С‚РµРєСѓС‰РёР№ СЂР°Р·РјРµСЂ С‚Р°Р±Р»РёС†С‹ */
 
 	for (; i< n; i++)
 
 		tableTrapeze[i] = tableTrapeze[i + 1];
 
-	cout << "Удаление выполнено" << endl;
+	cout << "РЈРґР°Р»РµРЅРёРµ РІС‹РїРѕР»РЅРµРЅРѕ" << endl;
 
 	return 0;
 
@@ -94,18 +94,18 @@ int trapezeTableOrdered::inssort(int k, trapeze*tn)
 
 }
 
-/* добавлениеэлементавтаблицу*/
+/* РґРѕР±Р°РІР»РµРЅРёРµСЌР»РµРјРµРЅС‚Р°РІС‚Р°Р±Р»РёС†Сѓ*/
 
 int trapezeTableOrdered::addTable(int k, trapeze*tn)
 
 {
 
 	if (findTable(k) >= 0)
-		cout << "в таблице есть элемент с указанным ключом" << endl;
+		cout << "РІ С‚Р°Р±Р»РёС†Рµ РµСЃС‚СЊ СЌР»РµРјРµРЅС‚ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РєР»СЋС‡РѕРј" << endl;
 		return-1;	
 
 	if (n == tSize)
-		cout << "в таблице нет свободной позиции для нового элемента" << endl;
+		cout << "РІ С‚Р°Р±Р»РёС†Рµ РЅРµС‚ СЃРІРѕР±РѕРґРЅРѕР№ РїРѕР·РёС†РёРё РґР»СЏ РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р°" << endl;
 		return-2;
 
 	return inssort(k, tn);
@@ -122,11 +122,11 @@ void trapezeTableOrdered::saveFileTable()
 		fout << tableTrapeze[i].key << " \n";
 
 	}
-	fout.close(); // закрыть файл
-	cout << "Данные записаны в файл\n" << endl;
+	fout.close(); // Р·Р°РєСЂС‹С‚СЊ С„Р°Р№Р»
+	cout << "Р”Р°РЅРЅС‹Рµ Р·Р°РїРёСЃР°РЅС‹ РІ С„Р°Р№Р»\n" << endl;
 }
 
-	void trapezeTableOrdered::printTable() //вывести элементы на экран
+	void trapezeTableOrdered::printTable() //РІС‹РІРµСЃС‚Рё СЌР»РµРјРµРЅС‚С‹ РЅР° СЌРєСЂР°РЅ
 	{
 		char buff[50];
 		int newLowerBase;
@@ -147,7 +147,7 @@ void trapezeTableOrdered::saveFileTable()
 			tableTrapeze[i].t->Set_height(newHeight);
 			tableTrapeze[i].key;
 		}
-		fin.close(); // закрыть файл
-		cout << "Данные считаны из файла\n" << endl;
+		fin.close(); // Р·Р°РєСЂС‹С‚СЊ С„Р°Р№Р»
+		cout << "Р”Р°РЅРЅС‹Рµ СЃС‡РёС‚Р°РЅС‹ РёР· С„Р°Р№Р»Р°\n" << endl;
 	
 	}

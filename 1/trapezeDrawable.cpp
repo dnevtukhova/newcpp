@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "trapeze.h"
 #include "trapezeDrawable.h"
 using namespace std;
@@ -14,7 +14,7 @@ trapezeDrawable::trapezeDrawable(trapeze *t, int xNew, int yNew)
 	
 }
 
-void trapezeDrawable::ReadFile() //считать из файла
+void trapezeDrawable::ReadFile() //СЃС‡РёС‚Р°С‚СЊ РёР· С„Р°Р№Р»Р°
 {
 	char buff[50];
 	int newLowerBase;
@@ -31,13 +31,13 @@ void trapezeDrawable::ReadFile() //считать из файла
 	trap->Set_upperBase(newUpperBase);
 	trap->Set_height(newHeight);
 
-	fin.close(); // закрыть файл
-	cout << "Данные считаны из файла\n" << endl;
+	fin.close(); // Р·Р°РєСЂС‹С‚СЊ С„Р°Р№Р»
+	cout << "Р”Р°РЅРЅС‹Рµ СЃС‡РёС‚Р°РЅС‹ РёР· С„Р°Р№Р»Р°\n" << endl;
 }
 
 
 
-void trapezeDrawable::SaveFile() //сохранить в файл
+void trapezeDrawable::SaveFile() //СЃРѕС…СЂР°РЅРёС‚СЊ РІ С„Р°Р№Р»
 {
 	
 		ofstream fout("SaveTrapeze.txt");
@@ -46,8 +46,8 @@ void trapezeDrawable::SaveFile() //сохранить в файл
 			fout << trap->Get_upperBase () << " ";
 			fout << trap->Get_height ()<< " ";
 		
-		fout.close(); // закрыть файл
-		cout << "Данные записаны в файл\n" << endl;
+		fout.close(); // Р·Р°РєСЂС‹С‚СЊ С„Р°Р№Р»
+		cout << "Р”Р°РЅРЅС‹Рµ Р·Р°РїРёСЃР°РЅС‹ РІ С„Р°Р№Р»\n" << endl;
 	
 }
 
@@ -55,10 +55,10 @@ void trapezeDrawable::SaveFile() //сохранить в файл
 int trapezeDrawable:: GetColour()
 {
 	int colour;
-	cout << "Выберите цвет:\n" << endl;
-	cout << "1. Желтый\n"
-		<< "2. Зеленый\n"
-		<< "3. Красный\n" << endl;
+	cout << "Р’С‹Р±РµСЂРёС‚Рµ С†РІРµС‚:\n" << endl;
+	cout << "1. Р–РµР»С‚С‹Р№\n"
+		<< "2. Р—РµР»РµРЅС‹Р№\n"
+		<< "3. РљСЂР°СЃРЅС‹Р№\n" << endl;
 	cout << ">>> ";
 	cin >> colour;
 	return colour;
@@ -66,17 +66,17 @@ int trapezeDrawable:: GetColour()
 
 void trapezeDrawable::SetText(HDC hdc) 
 {
-	// устанавливаем цвет фона
+	// СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С†РІРµС‚ С„РѕРЅР°
 	SetBkColor(hdc, RGB(0, 0, 0));
-	// устанавливаем цвет текста
+	// СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С†РІРµС‚ С‚РµРєСЃС‚Р°
 	SetTextColor(hdc, RGB(161, 70, 213));
 }
 
 void trapezeDrawable::SetPen(HDC hdc)
 {
-	// создаем желтое перо
+	// СЃРѕР·РґР°РµРј Р¶РµР»С‚РѕРµ РїРµСЂРѕ
 HPEN hYellowPen = CreatePen(PS_SOLID, 5, RGB(223, 238, 94));
-	// и выбираем его в контекст отображения, сохраняя предыдущее перо
+	// Рё РІС‹Р±РёСЂР°РµРј РµРіРѕ РІ РєРѕРЅС‚РµРєСЃС‚ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ, СЃРѕС…СЂР°РЅСЏСЏ РїСЂРµРґС‹РґСѓС‰РµРµ РїРµСЂРѕ
 	HPEN hOldPen = SelectPen(hdc, hYellowPen);
 	
 }
@@ -89,24 +89,24 @@ void trapezeDrawable::DelBrush(HDC hdc, HBRUSH hGreenBrush, HBRUSH hOldBrush)
 	
 }
 
-HBRUSH trapezeDrawable::SetBrush(HDC hdc) //выбрать кисть для заливки
+HBRUSH trapezeDrawable::SetBrush(HDC hdc) //РІС‹Р±СЂР°С‚СЊ РєРёСЃС‚СЊ РґР»СЏ Р·Р°Р»РёРІРєРё
 {
 	HBRUSH hGreenBrush;
 	int i = GetColour();
 	if (i == 1) 
 	{
-		hGreenBrush = CreateSolidBrush( RGB(254, 254, 34));//желтый
+		hGreenBrush = CreateSolidBrush( RGB(254, 254, 34));//Р¶РµР»С‚С‹Р№
 	}
 
 	else 
 	{
 		if (i == 2)
 		{
-			hGreenBrush = CreateSolidBrush(RGB(149, 246, 75));//зеленый
+			hGreenBrush = CreateSolidBrush(RGB(149, 246, 75));//Р·РµР»РµРЅС‹Р№
 		}
 		else 
 		{
-			hGreenBrush = CreateSolidBrush(RGB(252, 40, 71));//красный
+			hGreenBrush = CreateSolidBrush(RGB(252, 40, 71));//РєСЂР°СЃРЅС‹Р№
 		}
 	}
 		
@@ -117,17 +117,17 @@ HBRUSH trapezeDrawable::SetBrush(HDC hdc) //выбрать кисть для заливки
 
 void trapezeDrawable::Risov(HDC hdc, char*buf, RECT rt, HWND hwnd)
 {
-		// получаем размер окна
+		// РїРѕР»СѓС‡Р°РµРј СЂР°Р·РјРµСЂ РѕРєРЅР°
 		GetClientRect(hwnd, &rt);
-		// формируем выводимую строку
-		sprintf(buf, "Размер окна %d на %d пикселей", rt.right, rt.bottom);
-		// выводим строку графическими средствами
+		// С„РѕСЂРјРёСЂСѓРµРј РІС‹РІРѕРґРёРјСѓСЋ СЃС‚СЂРѕРєСѓ
+		sprintf(buf, "Р Р°Р·РјРµСЂ РѕРєРЅР° %d РЅР° %d РїРёРєСЃРµР»РµР№", rt.right, rt.bottom);
+		// РІС‹РІРѕРґРёРј СЃС‚СЂРѕРєСѓ РіСЂР°С„РёС‡РµСЃРєРёРјРё СЃСЂРµРґСЃС‚РІР°РјРё
 		TextOutA(hdc, 10, 10, buf, strlen(buf));
 		int height = trap->Get_height();
 		int lowerBase = trap->Get_lowerBase();
 		int upperBase = trap->Get_upperBase();
 				POINT ppt1[4] = {{ (*x+((lowerBase-upperBase)/2)),*y },{ *x + upperBase,*y },{ *x + lowerBase, *y + height}, {  *x,*y + height }};
-		// рисуем закрашенную трапецию
+		// СЂРёСЃСѓРµРј Р·Р°РєСЂР°С€РµРЅРЅСѓСЋ С‚СЂР°РїРµС†РёСЋ
 		Polygon(hdc, ppt1, 4);
 }
 
@@ -143,13 +143,13 @@ void trapezeDrawable::Vlozh(HDC hdc)
 trapezeDrawable::~trapezeDrawable() 
 {	
 	/*SelectBrush(hdc, hOldBrush);
-	// удаляем зеленую кисть
+	// СѓРґР°Р»СЏРµРј Р·РµР»РµРЅСѓСЋ РєРёСЃС‚СЊ
 	DeleteBrush(hGreenBrush);
-	// выбираем в контекст отображения предыдущее перо
+	// РІС‹Р±РёСЂР°РµРј РІ РєРѕРЅС‚РµРєСЃС‚ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РїСЂРµРґС‹РґСѓС‰РµРµ РїРµСЂРѕ
 	SelectPen(hdc, hOldPen);
-	// удаляем желтое перо
+	// СѓРґР°Р»СЏРµРј Р¶РµР»С‚РѕРµ РїРµСЂРѕ
 	DeletePen(hYellowPen);
-	// освобождаем контекст отображения
+	// РѕСЃРІРѕР±РѕР¶РґР°РµРј РєРѕРЅС‚РµРєСЃС‚ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ
 	ReleaseDC(hwnd, hdc);*/
 	delete x;
 	delete y;
@@ -160,7 +160,7 @@ int trapezeDrawable::GetNewSizeLb(RECT rt, HWND hwnd)
 {
 	GetClientRect(hwnd, &rt);
 	int lb;
-	cout << "Введите новое значение длины нижнего основания" << endl;
+	cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РґР»РёРЅС‹ РЅРёР¶РЅРµРіРѕ РѕСЃРЅРѕРІР°РЅРёСЏ" << endl;
 	cout << ">>> ";
 	cin >> lb;
 	
@@ -172,7 +172,7 @@ int trapezeDrawable::GetNewSizeUb(RECT rt, HWND hwnd)
 {
 	GetClientRect(hwnd, &rt);
 	int ub;
-	cout << "Введите новое значение длины верхнего основания" << endl;
+	cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РґР»РёРЅС‹ РІРµСЂС…РЅРµРіРѕ РѕСЃРЅРѕРІР°РЅРёСЏ" << endl;
 	cout << ">>> ";
 	cin >> ub;
 	if (ub<rt.left || ub>rt.right) throw 0;
@@ -183,7 +183,7 @@ int trapezeDrawable::GetNewSizeH(RECT rt, HWND hwnd)
 {
 	GetClientRect(hwnd, &rt);
 	int h;
-	cout << "Введите новое значение высоты" << endl;
+	cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РІС‹СЃРѕС‚С‹" << endl;
 	cout << ">>> ";
 	cin >> h;
 	if (h<rt.top || h>rt.bottom) throw 0;
@@ -200,19 +200,19 @@ void trapezeDrawable::SetSize(int lb, int ub, int h)
 	trap->Set_height(h);
 }
 
-int trapezeDrawable:: GetBiassX() //задать смещение (изменение положения)
+int trapezeDrawable:: GetBiassX() //Р·Р°РґР°С‚СЊ СЃРјРµС‰РµРЅРёРµ (РёР·РјРµРЅРµРЅРёРµ РїРѕР»РѕР¶РµРЅРёСЏ)
 {
 	int x1;
-	cout << "Введите смещение по оси x" << endl;
+	cout << "Р’РІРµРґРёС‚Рµ СЃРјРµС‰РµРЅРёРµ РїРѕ РѕСЃРё x" << endl;
 	cout << ">>> ";
 	cin >> x1;
 	return x1;
 }
 
-int trapezeDrawable::GetBiassY() //задать смещение (изменение положения)
+int trapezeDrawable::GetBiassY() //Р·Р°РґР°С‚СЊ СЃРјРµС‰РµРЅРёРµ (РёР·РјРµРЅРµРЅРёРµ РїРѕР»РѕР¶РµРЅРёСЏ)
 {
 	int y1;
-	cout << "Введите смещение по оси y" << endl;
+	cout << "Р’РІРµРґРёС‚Рµ СЃРјРµС‰РµРЅРёРµ РїРѕ РѕСЃРё y" << endl;
 	cout << ">>> ";
 	cin >> y1;
 	return y1;
@@ -222,7 +222,7 @@ int trapezeDrawable::GetBiassY() //задать смещение (изменение положения)
 
 
 
-void trapezeDrawable::SetPosition(int x1, int y1, RECT rt, HWND hwnd) // изменить положение фигуры
+void trapezeDrawable::SetPosition(int x1, int y1, RECT rt, HWND hwnd) // РёР·РјРµРЅРёС‚СЊ РїРѕР»РѕР¶РµРЅРёРµ С„РёРіСѓСЂС‹
 {
 	GetClientRect(hwnd, &rt);
 

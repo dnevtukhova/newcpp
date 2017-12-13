@@ -1,11 +1,11 @@
-#pragma once
+п»ї#pragma once
 #include "trapeze.h"
 #include "trapezeTableOrdered.h"
 
 class trapezeTableOrdered
 {
 private:
-	 const int tSize = 20;	/* максимальный размер таблицы */
+	 const int tSize = 20;	/* РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С‚Р°Р±Р»РёС†С‹ */
 
 	struct table {
 
@@ -13,17 +13,17 @@ private:
 
 		trapeze*t;
 	}*tableTrapeze;
-	int n=0; //текущий размер
+	int n=0; //С‚РµРєСѓС‰РёР№ СЂР°Р·РјРµСЂ
 
 public:
 	trapezeTableOrdered();	
 	~trapezeTableOrdered();
-	int addTable(int k, trapeze*t); //добавить
-	int inssort(int k, trapeze*t);//сортировка
-	int deleteTable(int nkey); //удалить
-	int findTable(int nkey); //найти элемент по ключу
-	void saveFileTable(); //сохранить в файл
-	void printTable(); //вывести элементы на экран
+	int addTable(int k, trapeze*t); //РґРѕР±Р°РІРёС‚СЊ
+	int inssort(int k, trapeze*t);//СЃРѕСЂС‚РёСЂРѕРІРєР°
+	int deleteTable(int nkey); //СѓРґР°Р»РёС‚СЊ
+	int findTable(int nkey); //РЅР°Р№С‚Рё СЌР»РµРјРµРЅС‚ РїРѕ РєР»СЋС‡Сѓ
+	void saveFileTable(); //СЃРѕС…СЂР°РЅРёС‚СЊ РІ С„Р°Р№Р»
+	void printTable(); //РІС‹РІРµСЃС‚Рё СЌР»РµРјРµРЅС‚С‹ РЅР° СЌРєСЂР°РЅ
 
 
 

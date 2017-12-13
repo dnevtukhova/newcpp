@@ -1,19 +1,19 @@
-#pragma once
+п»ї#pragma once
 #include "trapeze.h"
 
-trapeze::trapeze()  // по умолчанию
+trapeze::trapeze()  // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 {
-	lowerBase = new int;  // выделение динамической памяти под переменные
+	lowerBase = new int;  // РІС‹РґРµР»РµРЅРёРµ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё РїРѕРґ РїРµСЂРµРјРµРЅРЅС‹Рµ
 	upperBase = new int;
 	height = new int;
-	*lowerBase = 100;  // присвоение значения
+	*lowerBase = 100;  // РїСЂРёСЃРІРѕРµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ
 	*upperBase = 50;
 	*height = 50;
 }
 
 trapeze::trapeze(int lowerBaseNew, int upperBaseNew, int heightNew)
 {
-	lowerBase = new int;  // выделение динамической памяти под переменные
+	lowerBase = new int;  // РІС‹РґРµР»РµРЅРёРµ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё РїРѕРґ РїРµСЂРµРјРµРЅРЅС‹Рµ
 	upperBase = new int;
 	height = new int;
 	*lowerBase = lowerBaseNew;
@@ -23,23 +23,23 @@ trapeze::trapeze(int lowerBaseNew, int upperBaseNew, int heightNew)
 
 trapeze::trapeze(trapeze &t)
 {
-	lowerBase = new int;  // выделение динамической памяти под переменные
+	lowerBase = new int;  // РІС‹РґРµР»РµРЅРёРµ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё РїРѕРґ РїРµСЂРµРјРµРЅРЅС‹Рµ
 	upperBase = new int;
 	height = new int;
-	*lowerBase = *(t.lowerBase);  // копирование из другого экземпляра
+	*lowerBase = *(t.lowerBase);  // РєРѕРїРёСЂРѕРІР°РЅРёРµ РёР· РґСЂСѓРіРѕРіРѕ СЌРєР·РµРјРїР»СЏСЂР°
 	*upperBase = *(t.upperBase);
 	*height = *(t.height);
 }
-int trapeze::Get_lowerBase() { return *lowerBase; }  // селектор 
-int trapeze::Get_upperBase() { return *upperBase; }  // селектор
+int trapeze::Get_lowerBase() { return *lowerBase; }  // СЃРµР»РµРєС‚РѕСЂ 
+int trapeze::Get_upperBase() { return *upperBase; }  // СЃРµР»РµРєС‚РѕСЂ
 int trapeze::Get_height() { return *height; }
-void trapeze::Set_lowerBase(int lb) { *lowerBase = lb; }  // модификатор
-void trapeze::Set_upperBase(int ub) { *upperBase = ub; }  // модификатор
-void trapeze::Set_height(int h) { *height = h; }  // модификатор
+void trapeze::Set_lowerBase(int lb) { *lowerBase = lb; }  // РјРѕРґРёС„РёРєР°С‚РѕСЂ
+void trapeze::Set_upperBase(int ub) { *upperBase = ub; }  // РјРѕРґРёС„РёРєР°С‚РѕСЂ
+void trapeze::Set_height(int h) { *height = h; }  // РјРѕРґРёС„РёРєР°С‚РѕСЂ
 
-trapeze::~trapeze()  // деструктор
+trapeze::~trapeze()  // РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 {
-	delete lowerBase;  // очистка памяти
+	delete lowerBase;  // РѕС‡РёСЃС‚РєР° РїР°РјСЏС‚Рё
 	delete upperBase;
 	delete height;
 }
