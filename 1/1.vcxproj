@@ -140,12 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="trapezeTableOrdered.cpp" />
     <ClCompile Include="trapeze.cpp" />
-    <ClCompile Include="trapezeDraw.cpp" />
+    <ClCompile Include="trapezeDrawable.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="trapezeTableOrdered.h" />
     <ClInclude Include="trapeze.h" />
-    <ClInclude Include="trapezeDraw.h" />
+    <ClInclude Include="trapezeDrawable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

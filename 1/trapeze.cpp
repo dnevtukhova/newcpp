@@ -1,3 +1,4 @@
+#pragma once
 #include "trapeze.h"
 
 trapeze::trapeze()  // по умолчанию
