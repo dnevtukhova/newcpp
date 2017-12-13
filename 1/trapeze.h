@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <windows.h>
 #include <windowsx.h>
 #include <stdio.h>
@@ -10,21 +10,21 @@
 class trapeze
 {
 private:
-	int *lowerBase; //длина нижнего основани я
-	int *upperBase; //длина верхнего основания
-	int *height; //высота
+	int *lowerBase; //РґР»РёРЅР° РЅРёР¶РЅРµРіРѕ РѕСЃРЅРѕРІР°РЅРё СЏ
+	int *upperBase; //РґР»РёРЅР° РІРµСЂС…РЅРµРіРѕ РѕСЃРЅРѕРІР°РЅРёСЏ
+	int *height; //РІС‹СЃРѕС‚Р°
 
 public:
-	trapeze();  // конструктор по умолчанию
+	trapeze();  // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 
-	trapeze(int lowerBase, int upperBase, int height);  // конструктор с заданными параметрами
-	trapeze(trapeze &t);  //конструктор копирования
-	int Get_lowerBase(); //получить значение
+	trapeze(int lowerBase, int upperBase, int height);  // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ Р·Р°РґР°РЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё
+	trapeze(trapeze &t);  //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	int Get_lowerBase(); //РїРѕР»СѓС‡РёС‚СЊ Р·РЅР°С‡РµРЅРёРµ
 	int Get_upperBase();
 	int Get_height();
-	void Set_lowerBase(int lb); // изменить значение
+	void Set_lowerBase(int lb); // РёР·РјРµРЅРёС‚СЊ Р·РЅР°С‡РµРЅРёРµ
 	void Set_upperBase(int ub);
 	void Set_height(int h);
 
-	~trapeze();  // деструктор
+	~trapeze();  // РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 };
