@@ -10,7 +10,7 @@
 class trapeze
 {
 private:
-	int *lowerBase; //длина нижнего основания
+	int *lowerBase; //длина нижнего основани я
 	int *upperBase; //длина верхнего основания
 	int *height; //высота
 
