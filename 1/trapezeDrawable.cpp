@@ -142,15 +142,7 @@ void trapezeDrawable::Vlozh(HDC hdc)
 
 trapezeDrawable::~trapezeDrawable() 
 {	
-	/*SelectBrush(hdc, hOldBrush);
-	// удаляем зеленую кисть
-	DeleteBrush(hGreenBrush);
-	// выбираем в контекст отображения предыдущее перо
-	SelectPen(hdc, hOldPen);
-	// удаляем желтое перо
-	DeletePen(hYellowPen);
-	// освобождаем контекст отображения
-	ReleaseDC(hwnd, hdc);*/
+	
 	delete x;
 	delete y;
 	

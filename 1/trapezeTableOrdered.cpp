@@ -3,10 +3,14 @@
 #include "trapezeTableOrdered.h"
 using namespace std;
 
-trapezeTableOrdered::trapezeTableOrdered()
+trapezeTableOrdered::trapezeTableOrdered(int tSizeN)
 {
-	tableTrapeze = new table[tSize];
-	n = 1;
+	
+	 tableTrapeze = new table[tSizeN];
+	
+	//tableTrapeze->trap = t;
+	n = 0;
+	tSize = tSizeN;
 
 }
 
@@ -25,23 +29,34 @@ int trapezeTableOrdered::findTable(int nkey)
 
 {
 
-	int i = 0, k = tSize - 1;
+	int left = 0, right = n - 1;
 
-	while (i <= k) {
+	while (1) {
 
-		int j = (i + k) / 2;
+		int middle = (left + right) / 2;
 
-		if (tableTrapeze->key == nkey)
-			cout << "Элемент найден" << endl;
-			cout << tableTrapeze->key << endl;
-			return tableTrapeze->key; /* элементнайден */
-
-
-		if (tableTrapeze->key <nkey)
-
-			i = j + 1;
+		if (nkey < tableTrapeze[middle].key)
+		{
+			right = middle - 1;
+		}
+		else if (nkey > tableTrapeze[middle].key)
+		{
+			left = middle + 1;
+		}
 		else
-			k = j - 1;
+		{
+			cout << "Элемент найден" << endl;
+			cout << tableTrapeze[middle].key << endl;
+			cout << tableTrapeze[middle].trap->Get_lowerBase() << endl;
+			cout << tableTrapeze[middle].trap->Get_upperBase() << endl;
+			cout << tableTrapeze[middle].trap->Get_height() << endl;
+			return middle;
+		}
+			
+		
+			if (left > right)
+				return -1;
+		
 
 	}
 
@@ -73,6 +88,16 @@ int trapezeTableOrdered::deleteTable(int nKey)
 
 }
 
+void trapezeTableOrdered::printTO()
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout <<tableTrapeze[i].key << endl;
+		cout << tableTrapeze[i].trap->Get_lowerBase() << endl;
+		cout << tableTrapeze[i].trap->Get_upperBase() << endl;
+		cout << tableTrapeze[i].trap->Get_height()<< endl;
+	}
+}
 
 
 
@@ -88,40 +113,51 @@ int trapezeTableOrdered::inssort(int k, trapeze*tn)
 
 	tableTrapeze[i + 1].key = k;
 
-	tableTrapeze[i + 1].t = tn;
+	tableTrapeze[i + 1].trap = tn;
+	cout << "Элемент добавлен успешно\n" << endl;
 
 	return ++n;
 
 }
+
 
 /* добавлениеэлементавтаблицу*/
 
 int trapezeTableOrdered::addTable(int k, trapeze*tn)
 
 {
+		if (findTable(k) >= 0)
+		{
+			cout << "в таблице есть элемент с указанным ключом" << endl;
+			return-1;
+		}
 
-	if (findTable(k) >= 0)
-		cout << "в таблице есть элемент с указанным ключом" << endl;
-		return-1;	
+		else if (n == tSize)
+		{
+			cout << "в таблице нет свободной позиции для нового элемента" << endl;
+			return-2;
+		}
 
-	if (n == tSize)
-		cout << "в таблице нет свободной позиции для нового элемента" << endl;
-		return-2;
-
-	return inssort(k, tn);
-
+		else
+		{
+			inssort(k, tn);
+		}
+	
 }
+
 void trapezeTableOrdered::saveFileTable()
 {
 	ofstream fout("SaveOrderedTable.txt");
+	fout << n << "\n"; //количество элемнтов
 	for (int i=0; i < n; i++)
 	{
-		fout << tableTrapeze[i].t->Get_lowerBase() << " ";
-		fout << tableTrapeze[i].t->Get_upperBase() << " ";
-		fout << tableTrapeze[i].t->Get_height() << " ";
+		fout << tableTrapeze[i].trap->Get_lowerBase() << " ";
+		fout << tableTrapeze[i].trap->Get_upperBase() << " ";
+		fout << tableTrapeze[i].trap->Get_height() << " ";
 		fout << tableTrapeze[i].key << " \n";
 
 	}
+	
 	fout.close(); // закрыть файл
 	cout << "Данные записаны в файл\n" << endl;
 }
@@ -133,8 +169,11 @@ void trapezeTableOrdered::saveFileTable()
 		int newUpperBase;
 		int newHeight;
 		int newkey;
-		ifstream fin("SaveTrapeze.txt");
+		int newn;// считываем кол-во элементов
 
+		ifstream fin("SaveTrapeze.txt");
+		/*fin >> newn;
+		n = newn; //количество получили*/
 		for (int i = 0; i < n; i++)
 		{
 			fin >> newLowerBase;
@@ -142,9 +181,9 @@ void trapezeTableOrdered::saveFileTable()
 			fin >> newHeight;
 			fin >> newkey;
 
-			tableTrapeze[i].t->Set_lowerBase(newLowerBase);
-			tableTrapeze[i].t->Set_upperBase(newUpperBase);
-			tableTrapeze[i].t->Set_height(newHeight);
+			tableTrapeze[i].trap->Set_lowerBase(newLowerBase);
+			tableTrapeze[i].trap->Set_upperBase(newUpperBase);
+			tableTrapeze[i].trap->Set_height(newHeight);
 			tableTrapeze[i].key;
 		}
 		fin.close(); // закрыть файл

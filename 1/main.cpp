@@ -19,8 +19,13 @@ int menu()
 		<< "5. Считать из файла\n"
 		<< "6. Изменить размеры\n"
 		<< "7. Переместить фигуру\n"
-		<< "8. Выход из программы\n"
-		<< "9. Добавить объект в таблицу\n"
+		<< "8. Добавить объект в таблицу\n"
+		<< "9. Сохранить таблицу в файл\n"
+		<< "10.Вывести элементы таблицы из файла\n"
+		<< "11.Удалить элемент из таблицы\n" 
+		<< "12.Вывод содержимого таблицы на экран\n"
+		<< "13. Поиск элемента таблицы для индекса\n"
+		<< "14. Выход из программы\n"
 		<< "Для выхода с уровня нажмите Esc\n" << endl;
 	cout << ">>> ";
 	cin >> variant;
@@ -60,10 +65,12 @@ void main()
 	trapeze* t = new trapeze(500, 400, 300);
 	trapezeDrawable *tD = new trapezeDrawable(t,30,30);
 
+	trapezeTableOrdered *ntab = new trapezeTableOrdered(20);
+	
 	setlocale(LC_ALL, "rus");
 	for (;;)
 		{
-		
+			trapeze *K = new trapeze(*t);
 			int variant = menu();
 			switch (variant)
 			{
@@ -138,14 +145,35 @@ void main()
 				}
 				break;
 			case 8:
-				exit(0);
+				int i;
+				cout << "Введите ключ добавляемого элемента:\n" << endl;
+				cin >> i;
+				
+				ntab->addTable(i, K);
 				break;
 			case 9:
-				trapezeTableOrdered *ntab = new trapezeTableOrdered;
-				ntab->addTable(1, t);
-				trapeze *t2 = new trapeze(100, 100, 300);
-				ntab->addTable(1, t2);
-				ntab->findTable(1);
+				ntab->saveFileTable();
+				break;
+			case 10:
+				ntab->printTable();
+				break;
+			case 11:
+				int j;
+				cout << "Введите ключ удаляемого элемента:\n" << endl;
+				cin >> j;
+				ntab->deleteTable(j);
+				break;
+			case 12:
+				ntab->printTO();
+				break;
+			case 13:
+				int find;
+				cout << "Введите ключ элемента для поиска:\n" << endl;
+				cin >> find;
+				ntab->findTable(find);
+				break;
+			case 14:
+				exit(0);
 				break;
 			}
 		}

@@ -5,18 +5,18 @@
 class trapezeTableOrdered
 {
 private:
-	 const int tSize = 20;	/* максимальный размер таблицы */
+	int tSize;	/* максимальный размер таблицы */
 
 	struct table {
 
 		int key;
 
-		trapeze*t;
+		trapeze*trap;
 	}*tableTrapeze;
-	int n=0; //текущий размер
+	int n; //текущий размер
 
 public:
-	trapezeTableOrdered();	
+	trapezeTableOrdered(int tSize);
 	~trapezeTableOrdered();
 	int addTable(int k, trapeze*t); //добавить
 	int inssort(int k, trapeze*t);//сортировка
@@ -24,6 +24,7 @@ public:
 	int findTable(int nkey); //найти элемент по ключу
 	void saveFileTable(); //сохранить в файл
 	void printTable(); //вывести элементы на экран
+	void printTO();
 
 
 
