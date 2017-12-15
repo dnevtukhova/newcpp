@@ -23,10 +23,10 @@ public:
 	int deleteTable(int nkey); //удалить
 	int findTable(int nkey); //найти элемент по ключу
 	void saveFileTable(); //сохранить в файл
-	void printTable(); //вывести элементы на экран
+	void printTableOfFile(trapeze*tr, trapezeTableOrdered *ntab, int n); //вывести элементы на экран
 	void printTO();
-
-
-
+	int sizeFromFile(); //размерность таблицы из файла
+	void set_n(int nn) { n = nn; }
+	
 };
 

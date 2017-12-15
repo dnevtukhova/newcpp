@@ -72,6 +72,7 @@ void main()
 		{
 			trapeze *K = new trapeze(*t);
 			int variant = menu();
+			int n;
 			switch (variant)
 			{
 			case 1:
@@ -155,7 +156,9 @@ void main()
 				ntab->saveFileTable();
 				break;
 			case 10:
-				ntab->printTable();
+				n = ntab->sizeFromFile();
+				ntab->set_n(n);
+				ntab->printTableOfFile(t, ntab, n);
 				break;
 			case 11:
 				int j;
