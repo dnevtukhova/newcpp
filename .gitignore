@@ -3,5 +3,7 @@
 1/1.vcxproj.filters
 Debug/
 .vs/
-
+1/SaveOrderedTrapeze.txt
+1/SaveTrapeze.txt
+.gitignore
 

@@ -9,13 +9,14 @@
 
 class trapeze
 {
-private:
+protected:
 	int *lowerBase; //длина нижнего основани я
 	int *upperBase; //длина верхнего основания
 	int *height; //высота
 
 public:
-	trapeze();  // конструктор по умолчанию
+	virtual void DrawTrapeze(HDC hdc, char*buf, RECT rt, HWND hwnd) = 0; // чисто виртуальная функция
+	/*trapeze();  // конструктор по умолчанию
 
 	trapeze(int lowerBase, int upperBase, int height);  // конструктор с заданными параметрами
 	trapeze(trapeze &t);  //конструктор копирования
@@ -26,5 +27,5 @@ public:
 	void Set_upperBase(int ub);
 	void Set_height(int h);
 
-	~trapeze();  // деструктор
+	~trapeze();  // деструктор*/
 };

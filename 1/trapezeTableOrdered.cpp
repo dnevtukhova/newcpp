@@ -9,8 +9,6 @@ trapezeTableOrdered::trapezeTableOrdered(int tSizeN)
 {
 	
 	 tableTrapeze = new table[tSizeN];
-	
-	//tableTrapeze->trap = t;
 	n = 0;
 	tSize = tSizeN;
 
@@ -107,7 +105,7 @@ void trapezeTableOrdered::printTO()//вывод на экран
 
 
 
-int trapezeTableOrdered::inssort(int k, trapeze*tn)
+int trapezeTableOrdered::inssort(int k, shapeTrapeze*tn)
 
 {
 
@@ -129,7 +127,7 @@ int trapezeTableOrdered::inssort(int k, trapeze*tn)
 
 /* добавлениеэлементавтаблицу*/
 
-int trapezeTableOrdered::addTable(int k, trapeze*tn)
+int trapezeTableOrdered::addTable(int k, shapeTrapeze*tn)
 
 {
 		if (findTable(k) >= 0)
@@ -154,7 +152,7 @@ int trapezeTableOrdered::addTable(int k, trapeze*tn)
 void trapezeTableOrdered::saveFileTable()
 {
 	ofstream fout("SaveOrderedTable.txt");
-	//fout << n << " "; //количество элемнтов
+	
 	for (int i=0; i < n; i++)
 	{
 		fout << tableTrapeze[i].trap->Get_lowerBase() << " ";
@@ -169,20 +167,15 @@ void trapezeTableOrdered::saveFileTable()
 	cout << "Данные записаны в файл\n" << endl;
 }
 
-	void trapezeTableOrdered::printTableOfFile(trapeze*tr, trapezeTableOrdered *ntab, int n) //вывести элементы на экран
+	void trapezeTableOrdered::printTableOfFile(shapeTrapeze*tr, trapezeTableOrdered *ntab, int n) //вывести элементы на экран
 	{
 		char buff[50];
-		//int newn;// считываем кол-во элементов
 		int newLowerBase;
 		int newUpperBase;
 		int newHeight;
 		int newkey;
-		//int *k;
-
-		
 		ifstream fin("SaveOrderedTable.txt");
-		
-		
+			
 		for (int i = 0; i < n; i++)
 		{
 			fin >> newLowerBase;
@@ -202,7 +195,8 @@ void trapezeTableOrdered::saveFileTable()
 		cout << "Данные считаны из файла\n" << endl;
 	
 	}
-	int trapezeTableOrdered::sizeFromFile()
+
+	int trapezeTableOrdered::sizeFromFile() //при открытии из файла определить размерность таблицы
 	{
 		ifstream fin("SaveOrderedTable.txt");
 		string s;

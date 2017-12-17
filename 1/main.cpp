@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "trapeze.h"
-#include "trapezeDrawable.h"
+#include "shapeTrapeze.h"
+#include "filledTrapeze.h"
+#include "combyTrapeze.h"
 #include "trapezeTableOrdered.h"
 
 #define _CRT_SECURE_NO_WARNINGS
@@ -21,10 +23,10 @@ int menu()
 		<< "7. Переместить фигуру\n"
 		<< "8. Добавить объект в таблицу\n"
 		<< "9. Сохранить таблицу в файл\n"
-		<< "10.Вывести элементы таблицы из файла\n"
+		<< "10.Загрузить таблицу из файла\n"
 		<< "11.Удалить элемент из таблицы\n" 
-		<< "12.Вывод содержимого таблицы на экран\n"
-		<< "13. Поиск элемента таблицы для индекса\n"
+		<< "12.Вывести таблицу на экран\n"
+		<< "13. Поиск элемента таблицы по индексу\n"
 		<< "14. Выход из программы\n"
 		<< "Для выхода с уровня нажмите Esc\n" << endl;
 	cout << ">>> ";
@@ -62,66 +64,62 @@ void main()
 	HPEN hYellowPen;
 	HPEN hOldPen;
 	
-	trapeze* t = new trapeze(500, 400, 300);
-	trapezeDrawable *tD = new trapezeDrawable(t,30,30);
-
+	shapeTrapeze* t = new shapeTrapeze(500, 400, 300,30,30);
+	filledTrapeze* filt = new filledTrapeze(500, 400, 300, 30, 30);
+	combyTrapeze* comt = new combyTrapeze(500, 400, 300, 30, 30, filt);
+	
 	trapezeTableOrdered *ntab = new trapezeTableOrdered(20);
 	
 	setlocale(LC_ALL, "rus");
 	for (;;)
 		{
-			trapeze *K = new trapeze(*t);
+		shapeTrapeze *K = new shapeTrapeze(*t); //вызываем конструктор копирования для создания нового объекта класса
+		filledTrapeze*Kf = new filledTrapeze(*filt);
+		combyTrapeze*Kc = new combyTrapeze(*comt);
 			int variant = menu();
 			int n;
 			switch (variant)
 			{
 			case 1:
 				
-				tD->SetPen(hdc); //выбрать перо для контура
-				tD->SetText(hdc);// для вывода размера окна в виде текста
+				t->SetPen(hdc); //выбрать перо для контура
+				t->SetText(hdc);// для вывода размера окна в виде текста
 				do{
-					tD->Risov(hdc, buf, rt, hwnd);
+					t->DrawTrapeze(hdc, buf, rt, hwnd);
 				} while (getch() != 27);
 				break;
 			case 2:
 				
-				tD->SetPen(hdc); //выбрать перо для контура
-				tD->SetText(hdc);// для вывода размера окна в виде текста
+				filt->SetPen(hdc); //выбрать перо для контура
+				filt->SetText(hdc);// для вывода размера окна в виде текста
 				do
 				{
-					hGreenBrush = tD->SetBrush(hdc); //выбрать кисть для заливки
-					HBRUSH	hOldBrush = SelectBrush(hdc, hGreenBrush);
-				tD->Risov(hdc, buf, rt, hwnd);
-				tD->DelBrush(hdc, hGreenBrush, hOldBrush); //удалить кисть для заливки
+					filt->DrawTrapeze(hdc, buf, rt, hwnd);
 				} while (getch() != 27);
 				
 				break;
 			case 3:
-				tD->SetPen(hdc); //выбрать перо для контура
+				comt->SetPen(hdc); //выбрать перо для контура
 				
-				tD->SetText(hdc);// для вывода размера окна в виде текста
+				comt->SetText(hdc);// для вывода размера окна в виде текста
 				do {
-					hGreenBrush = tD->SetBrush(hdc); //выбрать кисть для заливки
-					HBRUSH	hOldBrush = SelectBrush(hdc, hGreenBrush);
-					tD->Risov(hdc, buf, rt, hwnd);
-					tD->DelBrush(hdc, hGreenBrush, hOldBrush); //удалить кисть для заливки
-					tD->Vlozh(hdc);
+					comt->DrawTrapeze(hdc, buf, rt, hwnd);
 				} while (getch() != 27);
 					
 				break;
 			case 4:
-				tD->SaveFile();
+				t->SaveFile();
 				break;
 			case 5:
-				tD->ReadFile();
+				t->ReadFile();
 				break;
 			case 6:
 				
 				try 
 				{
-					ub = tD->GetNewSizeUb(rt, hwnd);
-					lb = tD->GetNewSizeLb(rt, hwnd);
-					h = tD->GetNewSizeH(rt, hwnd);
+					ub = t->GetNewSizeUb(rt, hwnd);
+					lb = t->GetNewSizeLb(rt, hwnd);
+					h = t->GetNewSizeH(rt, hwnd);
 					
 				}
 				catch (int error)
@@ -129,15 +127,15 @@ void main()
 					if (error==0)
 					cout<<"Некорректно заданы параметры!!!"<<endl;
 				}
-				tD->SetSize(lb, ub, h);
+				t->SetSize(lb, ub, h);
 			
 				break;
 			case 7:
-				x1 = tD->GetBiassX();
-				y1 = tD->GetBiassY();
+				x1 = t->GetBiassX();
+				y1 = t->GetBiassY();
 				try 
 				{
-					tD->SetPosition(x1, y1, rt, hwnd);
+					t->SetPosition(x1, y1, rt, hwnd);
 				}
 				catch (int error)
 				{
@@ -180,6 +178,7 @@ void main()
 				break;
 			}
 		}
-	delete tD;
 	delete t;
+	delete filt;
+	delete comt;
 }
