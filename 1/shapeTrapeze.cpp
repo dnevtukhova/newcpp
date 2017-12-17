@@ -1,15 +1,15 @@
-#pragma once
+п»ї#pragma once
 #include "shapeTrapeze.h"
 using namespace std;
 
 shapeTrapeze::shapeTrapeze() 
 {
-	lowerBase = new int;  // выделение динамической памяти под переменные
+	lowerBase = new int;  // РІС‹РґРµР»РµРЅРёРµ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё РїРѕРґ РїРµСЂРµРјРµРЅРЅС‹Рµ
 	upperBase = new int;
 	height = new int;
 	x = new int;
 	y = new int;
-	*lowerBase = 100;  // присвоение значения
+	*lowerBase = 100;  // РїСЂРёСЃРІРѕРµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ
 	*upperBase = 50;
 	*height = 50;
 	*x = 30;
@@ -19,7 +19,7 @@ shapeTrapeze::shapeTrapeze()
 
 shapeTrapeze::shapeTrapeze(int lowerBaseNew, int upperBaseNew, int heightNew, int xNew, int yNew)
 {
-	lowerBase = new int;  // выделение динамической памяти под переменные
+	lowerBase = new int;  // РІС‹РґРµР»РµРЅРёРµ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё РїРѕРґ РїРµСЂРµРјРµРЅРЅС‹Рµ
 	upperBase = new int;
 	height = new int;
 	x = new int;
@@ -34,25 +34,25 @@ shapeTrapeze::shapeTrapeze(int lowerBaseNew, int upperBaseNew, int heightNew, in
 
 shapeTrapeze::shapeTrapeze(shapeTrapeze &t)
 {
-	lowerBase = new int;  // выделение динамической памяти под переменные
+	lowerBase = new int;  // РІС‹РґРµР»РµРЅРёРµ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё РїРѕРґ РїРµСЂРµРјРµРЅРЅС‹Рµ
 	upperBase = new int;
 	height = new int;
 	x = new int;
 	y = new int;
-	*lowerBase = *(t.lowerBase);  // копирование из другого экземпляра
+	*lowerBase = *(t.lowerBase);  // РєРѕРїРёСЂРѕРІР°РЅРёРµ РёР· РґСЂСѓРіРѕРіРѕ СЌРєР·РµРјРїР»СЏСЂР°
 	*upperBase = *(t.upperBase);
 	*height = *(t.height);
 	*x = *(t.x);
 	*y = *(t.y);
 }
 
-int shapeTrapeze::Get_lowerBase() { return *lowerBase; }  // селектор
+int shapeTrapeze::Get_lowerBase() { return *lowerBase; }  // СЃРµР»РµРєС‚РѕСЂ
 
-int shapeTrapeze::Get_upperBase() { return *upperBase; }  // селектор
+int shapeTrapeze::Get_upperBase() { return *upperBase; }  // СЃРµР»РµРєС‚РѕСЂ
 
 int shapeTrapeze::Get_height() { return *height; }
 
-void shapeTrapeze::Set_lowerBase (int lb) { *lowerBase = lb; }  // модификатор
+void shapeTrapeze::Set_lowerBase (int lb) { *lowerBase = lb; }  // РјРѕРґРёС„РёРєР°С‚РѕСЂ
 
 void shapeTrapeze::Set_upperBase (int ub) { *upperBase = ub; }
 
@@ -60,31 +60,31 @@ void shapeTrapeze::Set_height(int h) { *height = h; }
 
 void shapeTrapeze::SetText(HDC hdc)
 {
-	// устанавливаем цвет фона
+	// СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С†РІРµС‚ С„РѕРЅР°
 	SetBkColor(hdc, RGB(0, 0, 0));
-	// устанавливаем цвет текста
+	// СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С†РІРµС‚ С‚РµРєСЃС‚Р°
 	SetTextColor(hdc, RGB(161, 70, 213));
 }
 void shapeTrapeze::SetPen(HDC hdc)
 {
-	// создаем желтое перо
+	// СЃРѕР·РґР°РµРј Р¶РµР»С‚РѕРµ РїРµСЂРѕ
 	HPEN hYellowPen = CreatePen(PS_SOLID, 5, RGB(223, 238, 94));
-	// и выбираем его в контекст отображения, сохраняя предыдущее перо
+	// Рё РІС‹Р±РёСЂР°РµРј РµРіРѕ РІ РєРѕРЅС‚РµРєСЃС‚ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ, СЃРѕС…СЂР°РЅСЏСЏ РїСЂРµРґС‹РґСѓС‰РµРµ РїРµСЂРѕ
 	HPEN hOldPen = SelectPen(hdc, hYellowPen);
 }
 void shapeTrapeze::DrawTrapeze(HDC hdc, char*buf, RECT rt, HWND hwnd)
 {
-	// получаем размер окна
+	// РїРѕР»СѓС‡Р°РµРј СЂР°Р·РјРµСЂ РѕРєРЅР°
 	GetClientRect(hwnd, &rt);
-	// формируем выводимую строку
-	sprintf(buf, "Размер окна %d на %d пикселей", rt.right, rt.bottom);
-	// выводим строку графическими средствами
+	// С„РѕСЂРјРёСЂСѓРµРј РІС‹РІРѕРґРёРјСѓСЋ СЃС‚СЂРѕРєСѓ
+	sprintf(buf, "Р Р°Р·РјРµСЂ РѕРєРЅР° %d РЅР° %d РїРёРєСЃРµР»РµР№", rt.right, rt.bottom);
+	// РІС‹РІРѕРґРёРј СЃС‚СЂРѕРєСѓ РіСЂР°С„РёС‡РµСЃРєРёРјРё СЃСЂРµРґСЃС‚РІР°РјРё
 	TextOutA(hdc, 10, 10, buf, strlen(buf));
 	int height = Get_height();
 	int lowerBase = Get_lowerBase();
 	int upperBase = Get_upperBase();
 	POINT ppt1[4] = { { (*x + ((lowerBase - upperBase) / 2)),*y },{ *x + upperBase,*y },{ *x + lowerBase, *y + height },{ *x,*y + height } };
-	// рисуем трапецию
+	// СЂРёСЃСѓРµРј С‚СЂР°РїРµС†РёСЋ
 	Polygon(hdc, ppt1, 4);
 }
 
@@ -92,7 +92,7 @@ int shapeTrapeze::GetNewSizeLb(RECT rt, HWND hwnd)
 {
 	GetClientRect(hwnd, &rt);
 	int lb;
-	cout << "Введите новое значение длины нижнего основания" << endl;
+	cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РґР»РёРЅС‹ РЅРёР¶РЅРµРіРѕ РѕСЃРЅРѕРІР°РЅРёСЏ" << endl;
 	cout << ">>> ";
 	cin >> lb;
 
@@ -105,7 +105,7 @@ int shapeTrapeze::GetNewSizeUb(RECT rt, HWND hwnd)
 {
 	GetClientRect(hwnd, &rt);
 	int ub;
-	cout << "Введите новое значение длины верхнего основания" << endl;
+	cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РґР»РёРЅС‹ РІРµСЂС…РЅРµРіРѕ РѕСЃРЅРѕРІР°РЅРёСЏ" << endl;
 	cout << ">>> ";
 	cin >> ub;
 	if (ub<rt.left || ub>rt.right) throw 0;
@@ -115,7 +115,7 @@ int shapeTrapeze::GetNewSizeH(RECT rt, HWND hwnd)
 {
 	GetClientRect(hwnd, &rt);
 	int h;
-	cout << "Введите новое значение высоты" << endl;
+	cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РІС‹СЃРѕС‚С‹" << endl;
 	cout << ">>> ";
 	cin >> h;
 	if (h<rt.top || h>rt.bottom) throw 0;
@@ -140,7 +140,7 @@ void shapeTrapeze::SetPosition(int x1, int y1, RECT rt, HWND hwnd)
 int shapeTrapeze::GetBiassX()
 {
 	int x1;
-	cout << "Введите смещение по оси x" << endl;
+	cout << "Р’РІРµРґРёС‚Рµ СЃРјРµС‰РµРЅРёРµ РїРѕ РѕСЃРё x" << endl;
 	cout << ">>> ";
 	cin >> x1;
 	return x1;
@@ -148,7 +148,7 @@ int shapeTrapeze::GetBiassX()
 int shapeTrapeze::GetBiassY()
 {
 	int y1;
-	cout << "Введите смещение по оси y" << endl;
+	cout << "Р’РІРµРґРёС‚Рµ СЃРјРµС‰РµРЅРёРµ РїРѕ РѕСЃРё y" << endl;
 	cout << ">>> ";
 	cin >> y1;
 	return y1;
@@ -170,8 +170,8 @@ void shapeTrapeze::ReadFile()
 	Set_upperBase(newUpperBase);
 	Set_height(newHeight);
 
-	fin.close(); // закрыть файл
-	cout << "Данные считаны из файла\n" << endl;
+	fin.close(); // Р·Р°РєСЂС‹С‚СЊ С„Р°Р№Р»
+	cout << "Р”Р°РЅРЅС‹Рµ СЃС‡РёС‚Р°РЅС‹ РёР· С„Р°Р№Р»Р°\n" << endl;
 }
 void shapeTrapeze::SaveFile()
 {
@@ -181,13 +181,13 @@ void shapeTrapeze::SaveFile()
 	fout << Get_upperBase() << " ";
 	fout << Get_height() << " ";
 
-	fout.close(); // закрыть файл
-	cout << "Данные записаны в файл\n" << endl;
+	fout.close(); // Р·Р°РєСЂС‹С‚СЊ С„Р°Р№Р»
+	cout << "Р”Р°РЅРЅС‹Рµ Р·Р°РїРёСЃР°РЅС‹ РІ С„Р°Р№Р»\n" << endl;
 }
 
 shapeTrapeze:: ~shapeTrapeze()
 {
-	delete lowerBase;  // очистка памяти
+	delete lowerBase;  // РѕС‡РёСЃС‚РєР° РїР°РјСЏС‚Рё
 	delete upperBase;
 	delete height;
 	delete x;

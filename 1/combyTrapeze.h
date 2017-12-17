@@ -1,17 +1,17 @@
-#pragma once
+п»ї#pragma once
 #include "filledTrapeze.h"
 
 class combyTrapeze: public filledTrapeze
 {
 protected:
-	filledTrapeze *ft; //внутренняя фигура - закрашенная
+	filledTrapeze *ft; //РІРЅСѓС‚СЂРµРЅРЅСЏСЏ С„РёРіСѓСЂР° - Р·Р°РєСЂР°С€РµРЅРЅР°СЏ
 
 public:
 	combyTrapeze(int lowerBaseNew, int upperBaseNew, int heightNew, int xNew, int yNew, filledTrapeze *ftNew);
 	combyTrapeze(combyTrapeze&ct);
 
-	void DrawTrapeze(HDC hdc, char*buf, RECT rt, HWND hwnd);// переопределение чисто виртуальной функции
-	void Enclised (HDC hdc); //рисовать вложенную фигуру
+	void DrawTrapeze(HDC hdc, char*buf, RECT rt, HWND hwnd);// РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёРµ С‡РёСЃС‚Рѕ РІРёСЂС‚СѓР°Р»СЊРЅРѕР№ С„СѓРЅРєС†РёРё
+	void Enclised (HDC hdc); //СЂРёСЃРѕРІР°С‚СЊ РІР»РѕР¶РµРЅРЅСѓСЋ С„РёРіСѓСЂСѓ
 
 	~combyTrapeze();
 };

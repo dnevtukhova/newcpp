@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <windows.h>
 #include <windowsx.h>
 #include <stdio.h>
@@ -10,7 +10,7 @@
 class filled 
 {
 public:
-	int GetColour(); //Ввести цвет
-	HBRUSH SetBrush(HDC hdc); //выбрать кисть для заливки
-	void DelBrush(HDC hdc, HBRUSH hGreenBrush, HBRUSH hOldBrush); //удалить кисть
+	int GetColour(); //Р’РІРµСЃС‚Рё С†РІРµС‚
+	HBRUSH SetBrush(HDC hdc); //РІС‹Р±СЂР°С‚СЊ РєРёСЃС‚СЊ РґР»СЏ Р·Р°Р»РёРІРєРё
+	void DelBrush(HDC hdc, HBRUSH hGreenBrush, HBRUSH hOldBrush); //СѓРґР°Р»РёС‚СЊ РєРёСЃС‚СЊ
 };

@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "trapeze.h"
 
 class shapeTrapeze: public trapeze
@@ -7,32 +7,32 @@ protected:
 	int *x;
 	int *y;
 public:
-	shapeTrapeze();  // конструктор по умолчанию
+	shapeTrapeze();  // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 
-	shapeTrapeze(int lowerBaseNew, int upperBaseNew, int heightNew, int xNew, int yNew);  // конструктор с заданными параметрами
-	shapeTrapeze(shapeTrapeze &t);  //конструктор копирования
-	int Get_lowerBase(); //получить значение
+	shapeTrapeze(int lowerBaseNew, int upperBaseNew, int heightNew, int xNew, int yNew);  // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ Р·Р°РґР°РЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё
+	shapeTrapeze(shapeTrapeze &t);  //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	int Get_lowerBase(); //РїРѕР»СѓС‡РёС‚СЊ Р·РЅР°С‡РµРЅРёРµ
 	int Get_upperBase();
 	int Get_height();
-	void Set_lowerBase(int lb); // изменить значение
+	void Set_lowerBase(int lb); // РёР·РјРµРЅРёС‚СЊ Р·РЅР°С‡РµРЅРёРµ
 	void Set_upperBase(int ub);
 	void Set_height(int h);
-	void SetText(HDC hdc);// для вывода размера окна в виде текста
-	void SetPen(HDC hdc); //выбрать перо для контура
+	void SetText(HDC hdc);// РґР»СЏ РІС‹РІРѕРґР° СЂР°Р·РјРµСЂР° РѕРєРЅР° РІ РІРёРґРµ С‚РµРєСЃС‚Р°
+	void SetPen(HDC hdc); //РІС‹Р±СЂР°С‚СЊ РїРµСЂРѕ РґР»СЏ РєРѕРЅС‚СѓСЂР°
 
-	void DrawTrapeze(HDC hdc, char*buf, RECT rt, HWND hwnd);// переопределение чисто виртуальной функции
+	void DrawTrapeze(HDC hdc, char*buf, RECT rt, HWND hwnd);// РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёРµ С‡РёСЃС‚Рѕ РІРёСЂС‚СѓР°Р»СЊРЅРѕР№ С„СѓРЅРєС†РёРё
 
-	int GetNewSizeLb(RECT rt, HWND hwnd); //задать новые размеры фигуры
+	int GetNewSizeLb(RECT rt, HWND hwnd); //Р·Р°РґР°С‚СЊ РЅРѕРІС‹Рµ СЂР°Р·РјРµСЂС‹ С„РёРіСѓСЂС‹
 	int GetNewSizeUb(RECT rt, HWND hwnd);
 	int GetNewSizeH(RECT rt, HWND hwnd);
-	void SetSize(int lb, int ub, int h); //изменить размеры фигуры
-	void SetPosition(int x1, int y1, RECT rt, HWND hwnd); // изменить положение фигуры
-	int GetBiassX(); //задать смещение (изменение положения по оси X)
-	int GetBiassY(); //задать смещение (изменение положения по оси Y)
-	void ReadFile();//считать из файла
-	void SaveFile();//сохранить в файл
+	void SetSize(int lb, int ub, int h); //РёР·РјРµРЅРёС‚СЊ СЂР°Р·РјРµСЂС‹ С„РёРіСѓСЂС‹
+	void SetPosition(int x1, int y1, RECT rt, HWND hwnd); // РёР·РјРµРЅРёС‚СЊ РїРѕР»РѕР¶РµРЅРёРµ С„РёРіСѓСЂС‹
+	int GetBiassX(); //Р·Р°РґР°С‚СЊ СЃРјРµС‰РµРЅРёРµ (РёР·РјРµРЅРµРЅРёРµ РїРѕР»РѕР¶РµРЅРёСЏ РїРѕ РѕСЃРё X)
+	int GetBiassY(); //Р·Р°РґР°С‚СЊ СЃРјРµС‰РµРЅРёРµ (РёР·РјРµРЅРµРЅРёРµ РїРѕР»РѕР¶РµРЅРёСЏ РїРѕ РѕСЃРё Y)
+	void ReadFile();//СЃС‡РёС‚Р°С‚СЊ РёР· С„Р°Р№Р»Р°
+	void SaveFile();//СЃРѕС…СЂР°РЅРёС‚СЊ РІ С„Р°Р№Р»
 	
 
-	~shapeTrapeze();  // деструктор*/
+	~shapeTrapeze();  // РґРµСЃС‚СЂСѓРєС‚РѕСЂ*/
 
 };

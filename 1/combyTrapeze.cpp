@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "combyTrapeze.h"
 using namespace std;
 
@@ -21,7 +21,7 @@ void combyTrapeze::DrawTrapeze(HDC hdc, char*buf, RECT rt, HWND hwnd)
 	Enclised(hdc);
 }
 
-void combyTrapeze::Enclised(HDC hdc) //рисовать вложенную фигуру
+void combyTrapeze::Enclised(HDC hdc) //СЂРёСЃРѕРІР°С‚СЊ РІР»РѕР¶РµРЅРЅСѓСЋ С„РёРіСѓСЂСѓ
 {
 	int height = Get_height();
 	int upperBase = Get_upperBase();

@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "filled.h"
 using namespace std;
 
@@ -6,10 +6,10 @@ using namespace std;
 int filled::GetColour()
 {
 	int colour;
-	cout << "Выберите цвет:\n" << endl;
-	cout << "1. Желтый\n"
-		<< "2. Зеленый\n"
-		<< "3. Красный\n" << endl;
+	cout << "Р’С‹Р±РµСЂРёС‚Рµ С†РІРµС‚:\n" << endl;
+	cout << "1. Р–РµР»С‚С‹Р№\n"
+		<< "2. Р—РµР»РµРЅС‹Р№\n"
+		<< "3. РљСЂР°СЃРЅС‹Р№\n" << endl;
 	cout << ">>> ";
 	cin >> colour;
 	return colour;
@@ -21,18 +21,18 @@ HBRUSH filled::SetBrush(HDC hdc)
 	int i = GetColour();
 	if (i == 1)
 	{
-		hGreenBrush = CreateSolidBrush(RGB(254, 254, 34));//желтый
+		hGreenBrush = CreateSolidBrush(RGB(254, 254, 34));//Р¶РµР»С‚С‹Р№
 	}
 
 	else
 	{
 		if (i == 2)
 		{
-			hGreenBrush = CreateSolidBrush(RGB(149, 246, 75));//зеленый
+			hGreenBrush = CreateSolidBrush(RGB(149, 246, 75));//Р·РµР»РµРЅС‹Р№
 		}
 		else
 		{
-			hGreenBrush = CreateSolidBrush(RGB(252, 40, 71));//красный
+			hGreenBrush = CreateSolidBrush(RGB(252, 40, 71));//РєСЂР°СЃРЅС‹Р№
 		}
 	}
 

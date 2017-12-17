@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "shapeTrapeze.h"
 #include "filled.h"
 
@@ -10,7 +10,7 @@ public:
 	filledTrapeze(int lowerBaseNew, int upperBaseNew, int heightNew, int xNew, int yNew);
 	filledTrapeze(filledTrapeze&ft);
 
-	void DrawTrapeze(HDC hdc, char*buf, RECT rt, HWND hwnd); // переопределение чисто виртуальной функции
+	void DrawTrapeze(HDC hdc, char*buf, RECT rt, HWND hwnd); // РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёРµ С‡РёСЃС‚Рѕ РІРёСЂС‚СѓР°Р»СЊРЅРѕР№ С„СѓРЅРєС†РёРё
 
 	~filledTrapeze();
 };

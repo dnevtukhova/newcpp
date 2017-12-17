@@ -1,9 +1,9 @@
-#pragma once
+п»ї#pragma once
 #include "filledTrapeze.h"
 using namespace std;
 
 filledTrapeze::filledTrapeze(int lowerBaseNew, int upperBaseNew, int heightNew, int xNew, int yNew)
-:shapeTrapeze(lowerBaseNew, upperBaseNew, heightNew, xNew, yNew) // вызов конструктора базового класса
+:shapeTrapeze(lowerBaseNew, upperBaseNew, heightNew, xNew, yNew) // РІС‹Р·РѕРІ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР°
 {
 }
 
@@ -16,21 +16,21 @@ filledTrapeze::filledTrapeze(filledTrapeze&ft)
 void filledTrapeze:: DrawTrapeze(HDC hdc, char*buf, RECT rt, HWND hwnd)
 {
 	
-		HBRUSH hGreenBrush = SetBrush(hdc); //выбрать кисть для заливки
+		HBRUSH hGreenBrush = SetBrush(hdc); //РІС‹Р±СЂР°С‚СЊ РєРёСЃС‚СЊ РґР»СЏ Р·Р°Р»РёРІРєРё
 		HBRUSH	hOldBrush = SelectBrush(hdc, hGreenBrush);
-		// получаем размер окна
+		// РїРѕР»СѓС‡Р°РµРј СЂР°Р·РјРµСЂ РѕРєРЅР°
 		GetClientRect(hwnd, &rt);
-		// формируем выводимую строку
-		sprintf(buf, "Размер окна %d на %d пикселей", rt.right, rt.bottom);
-		// выводим строку графическими средствами
+		// С„РѕСЂРјРёСЂСѓРµРј РІС‹РІРѕРґРёРјСѓСЋ СЃС‚СЂРѕРєСѓ
+		sprintf(buf, "Р Р°Р·РјРµСЂ РѕРєРЅР° %d РЅР° %d РїРёРєСЃРµР»РµР№", rt.right, rt.bottom);
+		// РІС‹РІРѕРґРёРј СЃС‚СЂРѕРєСѓ РіСЂР°С„РёС‡РµСЃРєРёРјРё СЃСЂРµРґСЃС‚РІР°РјРё
 		TextOutA(hdc, 10, 10, buf, strlen(buf));
 		int height = Get_height();
 		int lowerBase = Get_lowerBase();
 		int upperBase = Get_upperBase();
 		POINT ppt1[4] = { { (*x + ((lowerBase - upperBase) / 2)),*y },{ *x + upperBase,*y },{ *x + lowerBase, *y + height },{ *x,*y + height } };
-		// рисуем трапецию
+		// СЂРёСЃСѓРµРј С‚СЂР°РїРµС†РёСЋ
 		Polygon(hdc, ppt1, 4);
-		DelBrush(hdc, hGreenBrush, hOldBrush); //удалить кисть для заливки
+		DelBrush(hdc, hGreenBrush, hOldBrush); //СѓРґР°Р»РёС‚СЊ РєРёСЃС‚СЊ РґР»СЏ Р·Р°Р»РёРІРєРё
 }
 
 filledTrapeze::~filledTrapeze()
