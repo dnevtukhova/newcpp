@@ -4,6 +4,9 @@
 #include "filledTrapeze.h"
 #include "combyTrapeze.h"
 #include "trapezeTableOrdered.h"
+#include "trapezeTableOrdered.cpp"
+#include <iostream>
+#include <string>
 
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -21,11 +24,11 @@ int menu()
 		<< "5. Считать из файла\n"
 		<< "6. Изменить размеры\n"
 		<< "7. Переместить фигуру\n"
-		<< "8. Добавить объект в таблицу\n"
+		<< "8. Добавить объект в таблицу\n(для демонстрации работы шаблона)"
 		<< "9. Сохранить таблицу в файл\n"
 		<< "10.Загрузить таблицу из файла\n"
 		<< "11.Удалить элемент из таблицы\n" 
-		<< "12.Вывести таблицу на экран\n"
+		<< "12.Вывести таблицу на экран\n(для демонстрации работы шаблона)"
 		<< "13. Поиск элемента таблицы по индексу\n"
 		<< "14. Выход из программы\n"
 		<< "Для выхода с уровня нажмите Esc\n" << endl;
@@ -63,17 +66,21 @@ void main()
 	HBRUSH hGreenBrush;
 	HPEN hYellowPen;
 	HPEN hOldPen;
+
+	trapeze *t;
 	
-	shapeTrapeze* t = new shapeTrapeze(500, 400, 300,30,30);
-	filledTrapeze* filt = new filledTrapeze(500, 400, 300, 30, 30);
-	combyTrapeze* comt = new combyTrapeze(500, 400, 300, 30, 30, filt);
+	shapeTrapeze* sht = new shapeTrapeze(500, 400, 300,30,30);
+	filledTrapeze* filt = new filledTrapeze(350, 200, 400, 30, 30);
+	combyTrapeze* comt = new combyTrapeze(400, 300, 400, 30, 30);
 	
-	trapezeTableOrdered *ntab = new trapezeTableOrdered(20);
+	trapezeTableOrdered <shapeTrapeze*> ntabShape(20);
+	trapezeTableOrdered <filledTrapeze*> ntabFilled(20);
+	trapezeTableOrdered <combyTrapeze*> ntabComby(20);
 	
 	setlocale(LC_ALL, "rus");
 	for (;;)
 		{
-		shapeTrapeze *K = new shapeTrapeze(*t); //вызываем конструктор копирования для создания нового объекта класса
+		shapeTrapeze *K = new shapeTrapeze(*sht); //вызываем конструктор копирования для создания нового объекта класса
 		filledTrapeze*Kf = new filledTrapeze(*filt);
 		combyTrapeze*Kc = new combyTrapeze(*comt);
 			int variant = menu();
@@ -81,15 +88,16 @@ void main()
 			switch (variant)
 			{
 			case 1:
+				t = sht;
 				
-				t->SetPen(hdc); //выбрать перо для контура
-				t->SetText(hdc);// для вывода размера окна в виде текста
+				sht->SetPen(hdc); //выбрать перо для контура
+				sht->SetText(hdc);// для вывода размера окна в виде текста
 				do{
-					t->DrawTrapeze(hdc, buf, rt, hwnd);
+					sht->DrawTrapeze(hdc, buf, rt, hwnd);
 				} while (getch() != 27);
 				break;
 			case 2:
-				
+				t = filt;
 				filt->SetPen(hdc); //выбрать перо для контура
 				filt->SetText(hdc);// для вывода размера окна в виде текста
 				do
@@ -99,6 +107,7 @@ void main()
 				
 				break;
 			case 3:
+				t = comt;
 				comt->SetPen(hdc); //выбрать перо для контура
 				
 				comt->SetText(hdc);// для вывода размера окна в виде текста
@@ -108,18 +117,17 @@ void main()
 					
 				break;
 			case 4:
-				t->SaveFile();
-				break;
+				sht->SaveFile();
+			break;
 			case 5:
-				t->ReadFile();
-				break;
+				sht->ReadFile();
 			case 6:
-				
+			
 				try 
 				{
-					ub = t->GetNewSizeUb(rt, hwnd);
-					lb = t->GetNewSizeLb(rt, hwnd);
-					h = t->GetNewSizeH(rt, hwnd);
+					ub = sht->GetNewSizeUb(rt, hwnd);
+					lb = sht->GetNewSizeLb(rt, hwnd);
+					h = sht->GetNewSizeH(rt, hwnd);
 					
 				}
 				catch (int error)
@@ -127,15 +135,15 @@ void main()
 					if (error==0)
 					cout<<"Некорректно заданы параметры!!!"<<endl;
 				}
-				t->SetSize(lb, ub, h);
+				sht->SetSize(lb, ub, h);
 			
 				break;
 			case 7:
-				x1 = t->GetBiassX();
-				y1 = t->GetBiassY();
+				x1 = sht->GetBiassX();
+				y1 = sht->GetBiassY();
 				try 
 				{
-					t->SetPosition(x1, y1, rt, hwnd);
+					sht->SetPosition(x1, y1, rt, hwnd);
 				}
 				catch (int error)
 				{
@@ -144,41 +152,57 @@ void main()
 				}
 				break;
 			case 8:
+				
 				int i;
-				cout << "Введите ключ добавляемого элемента:\n" << endl;
+				cout << "Введите ключ добавляемого элемента для контура:\n" << endl;
 				cin >> i;
 				
-				ntab->addTable(i, K);
+							ntabShape.addTable(i, K);
+				int i1;
+				cout << "Введите ключ добавляемого элемента для закрашенной:\n" << endl;
+				cin >> i1;
+						
+							ntabFilled.addTable(i1, Kf);
+				int i2;
+				cout << "Введите ключ добавляемого элемента для вложенной:\n" << endl;
+				cin >> i2;
+						
+							ntabComby.addTable(i2, Kc);
 				break;
 			case 9:
-				ntab->saveFileTable();
+				ntabShape.saveFileTable();
 				break;
 			case 10:
-				n = ntab->sizeFromFile();
-				ntab->set_n(n);
-				ntab->printTableOfFile(t, ntab, n);
+				n = ntabShape.sizeFromFile();
+				ntabShape.set_n(n);
+				ntabShape.printTableOfFile(sht, &ntabShape, n);
 				break;
 			case 11:
 				int j;
 				cout << "Введите ключ удаляемого элемента:\n" << endl;
 				cin >> j;
-				ntab->deleteTable(j);
+				ntabShape.deleteTable(j);
 				break;
 			case 12:
-				ntab->printTO();
+				cout << "Трапеция-контур:\n" << endl;
+				ntabShape.printTO();
+				cout << "Трапеция-закрашенная:\n" << endl;
+				ntabFilled.printTO();
+				cout << "Трапеция с вложенной фигурой:\n" << endl;
+				ntabComby.printTO();
 				break;
 			case 13:
 				int find;
 				cout << "Введите ключ элемента для поиска:\n" << endl;
 				cin >> find;
-				ntab->findTable(find);
+				ntabShape.findTable(find);
 				break;
 			case 14:
 				exit(0);
 				break;
 			}
 		}
-	delete t;
+	delete sht;
 	delete filt;
 	delete comt;
 }

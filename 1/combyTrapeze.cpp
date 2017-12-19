@@ -3,10 +3,10 @@
 using namespace std;
 
 
-combyTrapeze::combyTrapeze(int lowerBaseNew, int upperBaseNew, int heightNew, int xNew, int yNew, filledTrapeze *ftNew)
+combyTrapeze::combyTrapeze(int lowerBaseNew, int upperBaseNew, int heightNew, int xNew, int yNew)
 	:filledTrapeze(lowerBaseNew, upperBaseNew, heightNew, xNew, yNew)
 {
-	ft = ftNew;
+	ft = new filledTrapeze(lowerBaseNew, upperBaseNew, heightNew, xNew, yNew);
 }
 
 combyTrapeze::combyTrapeze(combyTrapeze&ct)

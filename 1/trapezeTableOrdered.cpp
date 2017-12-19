@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-trapezeTableOrdered::trapezeTableOrdered(int tSizeN)
+template <class Type> trapezeTableOrdered<Type>::trapezeTableOrdered(int tSizeN)
 {
 	
 	 tableTrapeze = new table[tSizeN];
@@ -16,7 +16,7 @@ trapezeTableOrdered::trapezeTableOrdered(int tSizeN)
 
 
 
-trapezeTableOrdered::~trapezeTableOrdered()
+template <class Type> trapezeTableOrdered<Type>::~trapezeTableOrdered()
 {
 	delete[] tableTrapeze;
 }
@@ -25,7 +25,7 @@ trapezeTableOrdered::~trapezeTableOrdered()
 
 /* Поиск элемента в таблице; результат – индекс найденного элемента или -1 */
 
-int trapezeTableOrdered::findTable(int nkey)
+template <class Type> int trapezeTableOrdered<Type>::findTable(int nkey)
 
 {
 
@@ -67,14 +67,14 @@ int trapezeTableOrdered::findTable(int nkey)
 
 /* удаление элемента в таблице */
 
-int trapezeTableOrdered::deleteTable(int nKey)
+template <class Type> int trapezeTableOrdered<Type>::deleteTable(int nKey)
 {
 
 	int i;
 
 	if ((i=findTable(nKey) < 0))
 
-		return-1;	/* элемента в таблице нет */
+		return-1;	// элемента в таблице нет 
 	
 
 	--n;	/* новый текущий размер таблицы */
@@ -92,7 +92,7 @@ int trapezeTableOrdered::deleteTable(int nKey)
 
 }
 
-void trapezeTableOrdered::printTO()//вывод на экран
+template <class Type> void trapezeTableOrdered<Type>::printTO()//вывод на экран
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -105,7 +105,7 @@ void trapezeTableOrdered::printTO()//вывод на экран
 
 
 
-int trapezeTableOrdered::inssort(int k, shapeTrapeze*tn)
+template <class Type> int trapezeTableOrdered<Type>::inssort(int k, Type tn)
 
 {
 
@@ -127,7 +127,7 @@ int trapezeTableOrdered::inssort(int k, shapeTrapeze*tn)
 
 /* добавлениеэлементавтаблицу*/
 
-int trapezeTableOrdered::addTable(int k, shapeTrapeze*tn)
+template <class Type> int trapezeTableOrdered<Type>::addTable(int k, Type tn)
 
 {
 		if (findTable(k) >= 0)
@@ -149,7 +149,7 @@ int trapezeTableOrdered::addTable(int k, shapeTrapeze*tn)
 	
 }
 
-void trapezeTableOrdered::saveFileTable()
+template <class Type>void trapezeTableOrdered<Type>::saveFileTable()
 {
 	ofstream fout("SaveOrderedTable.txt");
 	
@@ -164,10 +164,10 @@ void trapezeTableOrdered::saveFileTable()
 	}
 	
 	fout.close(); // закрыть файл
-	cout << "Данные записаны в файл\n" << endl;
+	std::cout << "Данные записаны в файл\n" << endl;
 }
 
-	void trapezeTableOrdered::printTableOfFile(shapeTrapeze*tr, trapezeTableOrdered *ntab, int n) //вывести элементы на экран
+template <class Type> void trapezeTableOrdered<Type>::printTableOfFile(Type tr, trapezeTableOrdered *ntab, int n) //вывести элементы на экран
 	{
 		char buff[50];
 		int newLowerBase;
@@ -191,12 +191,12 @@ void trapezeTableOrdered::saveFileTable()
 			tableTrapeze[i].trap = tr;
 			tableTrapeze[i].key= newkey;
 		}
+
 		fin.close(); // закрыть файл
-		cout << "Данные считаны из файла\n" << endl;
-	
+		std::cout << "Данные считаны из файла\n" << endl;
 	}
 
-	int trapezeTableOrdered::sizeFromFile() //при открытии из файла определить размерность таблицы
+template <class Type> int trapezeTableOrdered<Type>::sizeFromFile() //при открытии из файла определить размерность таблицы
 	{
 		ifstream fin("SaveOrderedTable.txt");
 		string s;

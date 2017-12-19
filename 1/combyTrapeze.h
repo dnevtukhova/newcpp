@@ -7,7 +7,7 @@ protected:
 	filledTrapeze *ft; //внутренняя фигура - закрашенная
 
 public:
-	combyTrapeze(int lowerBaseNew, int upperBaseNew, int heightNew, int xNew, int yNew, filledTrapeze *ftNew);
+	combyTrapeze(int lowerBaseNew, int upperBaseNew, int heightNew, int xNew, int yNew);
 	combyTrapeze(combyTrapeze&ct);
 
 	void DrawTrapeze(HDC hdc, char*buf, RECT rt, HWND hwnd);// переопределение чисто виртуальной функции
